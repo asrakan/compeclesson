@@ -15,8 +15,8 @@ namespace LessonsBasic
         [SerializeField] int tamSayi2 = 100;
         float ondalikSayi = 0.25f;
         float ondalikSayi2 = 5.2342f;
-        bool dogruYanlis = true;
-        bool dogruYanlis2 = false;
+        bool dogru = true;
+        bool yanlis2 = false;
 
         void Start()
         {

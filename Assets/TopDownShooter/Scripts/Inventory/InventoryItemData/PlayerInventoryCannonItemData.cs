@@ -18,7 +18,7 @@ namespace TopDownShooter.Inventory
         public override void Initialize(PlayerInventoryController targetPayerInventory)
         {
             base.Initialize(targetPayerInventory);
-            InstantiateAndInitializePrefab(targetPayerInventory.Parent);
+            InstantiateAndInitializePrefab(targetPayerInventory.CannonParent);
             targetPayerInventory.ReactiveShootCommand.Subscribe(OnReactiveShootCommand).AddTo(_compositeDisposable);
             //bunun cannono props
             Debug.Log("THIS CLASS IS PLAYER INVENTORY CANNON ITEM DATA");

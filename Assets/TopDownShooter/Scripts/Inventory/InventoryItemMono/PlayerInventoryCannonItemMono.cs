@@ -12,5 +12,13 @@ namespace TopDownShooter.Inventory
             //add also effects and such
             ScriptableShootManager.Instance.Shoot(_cannonShootPoint.position, _cannonShootPoint.forward);
         }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(_cannonShootPoint.position, .15f);
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(_cannonShootPoint.position, _cannonShootPoint.position + _cannonShootPoint.forward * 10);
+        }
     }
 }

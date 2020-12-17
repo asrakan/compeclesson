@@ -14,7 +14,7 @@ namespace TopDownShooter.AI
         public override void ProcessInput()
         {
             float distance = Vector3.Distance(_targetTransform.position, _currentTarget);
-            if (distance > 0)
+            if (distance > 3)
             {
                 Vertical = 1;
             }
@@ -26,11 +26,16 @@ namespace TopDownShooter.AI
             var rotation = Quaternion.LookRotation(dir, Vector3.up).eulerAngles;
             rotationDebug = rotation;
             rotationDebugLocal = _targetTransform.rotation.eulerAngles;
-            var rotationGap = Mathf.Abs(rotation.y - _targetTransform.rotation.eulerAngles.y);
+            if (rotation.y > 360)
+            {
+                rotation.y = 360 - rotation.y;
+            }
+            var rotationGap = rotation.y - _targetTransform.rotation.eulerAngles.y;
             rotationGapDebug = rotationGap;
+            bool isGapNegative = rotationGap < 0;
             if (Mathf.Abs(rotationGap) > 5f)//0.25f 
             {
-                float horizontalClamped = Mathf.Clamp(rotationGap / 180, -1, 1);
+                float horizontalClamped = Mathf.Clamp(Mathf.Abs(rotationGap / 180), -1, 1);
                 Horizontal = horizontalClamped;
             }
             else

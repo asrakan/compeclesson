@@ -26,7 +26,6 @@ namespace TopDownShooter.Stat
         public virtual void Damage(float dmg)
         {
             Health -= dmg;
-            Debug.Log("you damaged me : " + dmg + " current health : " + Health);
             if (Health <= 0)
             {
                 Destroy(gameObject);

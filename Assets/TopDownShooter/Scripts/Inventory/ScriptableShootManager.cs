@@ -11,13 +11,11 @@ namespace TopDownShooter.Inventory
         public override void Initialize()
         {
             base.Initialize();
-            Debug.Log("scriptable shoot manager instantiated");
         }
 
         public override void Destroy()
         {
             base.Destroy();
-            Debug.Log("scriptable shoot manager destroyed");
         }
 
         public void Shoot(Vector3 origin, Vector3 direction)
@@ -26,7 +24,6 @@ namespace TopDownShooter.Inventory
             var physic = Physics.Raycast(origin, direction, out rHit);
             if (physic)
             {
-                Debug.Log("Collider : " + rHit.collider.name);
                 int colliderInstanceId = rHit.collider.GetInstanceID();
                 if (DamagebleHelper.DamagebleList.ContainsKey(colliderInstanceId))
                 {

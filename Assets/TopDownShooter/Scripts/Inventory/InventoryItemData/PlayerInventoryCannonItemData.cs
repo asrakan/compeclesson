@@ -20,8 +20,6 @@ namespace TopDownShooter.Inventory
             base.Initialize(targetPayerInventory);
             InstantiateAndInitializePrefab(targetPayerInventory.CannonParent);
             targetPayerInventory.ReactiveShootCommand.Subscribe(OnReactiveShootCommand).AddTo(_compositeDisposable);
-            //bunun cannono props
-            Debug.Log("THIS CLASS IS PLAYER INVENTORY CANNON ITEM DATA");
         }
 
 
@@ -32,7 +30,6 @@ namespace TopDownShooter.Inventory
 
         private void OnReactiveShootCommand(Unit obj)
         {
-            Debug.Log("reactive command shoot");
             Shoot();
         }
 
@@ -42,10 +39,6 @@ namespace TopDownShooter.Inventory
             {
                 _instantiated.Shoot();
                 _lastShootTime = Time.time;
-            }
-            else
-            {
-                Debug.LogError("you can't shoot now");
             }
         }
     }

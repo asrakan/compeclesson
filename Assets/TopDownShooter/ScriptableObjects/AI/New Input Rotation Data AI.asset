@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dde4990ff012b74b9e1c83b9aa82a9a, type: 3}
+  m_Name: New Input Rotation Data AI
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  Vertical: 0
+  _axisActive: 0
+  AxisNameHorizontal: 
+  AxisNameVertical: 
+  _keyBaseHorizontalActive: 0
+  PositiveHorizontalKeyCode: 0
+  NegativeHorizontalKeyCode: 0
+  _keyBaseVerticalActive: 0
+  PositiveVerticalKeyCode: 0
+  NegativeVerticalKeyCode: 0
+  _increaseAmount: 0.015

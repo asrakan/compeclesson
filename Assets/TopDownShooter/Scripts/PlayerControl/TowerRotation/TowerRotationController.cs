@@ -8,11 +8,11 @@ namespace TopDownShooter.PlayerControls
 {
     public class TowerRotationController : MonoBehaviour
     {
-        [SerializeField] private InputData _rotationInput;
+        [SerializeField] private AbstractInputData _rotationInput;
         [SerializeField] private Transform _towerTransform;
         public Transform TowerTransform { get { return _towerTransform; } }
         [SerializeField] private TowerRotationSettings _towerRotationSettings;
-        public void InitializeInput(InputData inputData)
+        public void InitializeInput(AbstractInputData inputData)
         {
             _rotationInput = inputData;
         }

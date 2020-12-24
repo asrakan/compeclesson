@@ -13,6 +13,7 @@ namespace TopDownShooter.Stat
         public float Health = 100;
         public float Armor = 100;
         private Vector3 _defaultScale;
+        private bool _isDead = false;
         public ReactiveCommand OnDeath = new ReactiveCommand();
         protected virtual void Awake()
         {
@@ -28,6 +29,10 @@ namespace TopDownShooter.Stat
 
         public virtual void Damage(IDamage dmg)
         {
+            if (dmg.TimedBaseDamage > 0)
+            {
+                StartCoroutine(TimedBaseDamage(dmg.TimedBaseDamage, dmg.TimedBaseDamageDuration));
+            }
             if (Armor > 0)
             {
                 Armor -= (dmg.Damage * dmg.ArmorPenetration);
@@ -37,11 +42,34 @@ namespace TopDownShooter.Stat
                 Health -= dmg.Damage;
                 //basic if armor is negative means damage is much more than armor
                 Health += Armor;
-                if (Health <= 0)
-                {
-                    OnDeath.Execute();
-                    Destroy(gameObject);
-                }
+                CheckHealth();
+            }
+        }
+
+
+        private IEnumerator TimedBaseDamage(float damage, float totalDuration)
+        {
+            while (totalDuration > 0)
+            {
+                yield return new WaitForSeconds(1);
+                totalDuration -= 1;
+                Health -= damage;
+                CheckHealth();
+            }
+        }
+
+        private void CheckHealth()
+        {
+            if (_isDead)
+            {
+                return;
+            }
+            if (Health <= 0)
+            {
+                StopAllCoroutines();
+                _isDead = true;
+                OnDeath.Execute();
+                Destroy(gameObject);
             }
         }
     }

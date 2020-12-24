@@ -1,0 +1,177 @@
+Please, always remove previous version before updating!
+
+<a href="http://smart-assets.org/index/0-11">All Release Notes Here</a>
+http://smart-assets.org/index/0-11
+
+//***TCK Version 1.5.5:***//
+
+Changes:
+- Major inspector's improvements
+- Significant refactorings
+- Removed usless "On/Off toggle" in events
+- New default settings for Canvas
+
+Improvements:
+- Added tools menu for defines
+- Added about window
+
+Fixes:
+- Inaccurate applying of inspector changes.
+
+
+//***TCK Version 1.5:***//
+
+Fixes:
+- Incrorrect axes inversing.
+
+Improvements:
+Add new static bool field isActive (read only) in "TCKInput.cs"
+Add new static functions: BindAction, UnBindAction, BindAxes, UnBindAxes, GetControllerEnable, SetControllerEnable, GetControllerActive, SetControllerActive, GetControllerVisible, SetControllerVisible, GetButtonClick, GetUpdateType, SetUpdateType, GetTouchPhase in "TCKInput.cs"
+- Add new enums: 
+  * AxisType - for easily getting axis by type.
+  * UpdateType - for select update method of delegates and events invoking.
+  * TCKTouchPhase - for describes phase of a finger touch.
+  * ActionPhase - for delegates of BindAction API.
+- Add new delegates: ActionEventHandler, ActionAlwaysHandler, AxesEventHandler, AxesAlwaysHandler.
+- Add new events: ActionEvent, AlwaysActionEvent, AxesEvent, AlwaysAxesEvent.
+- Add abstract new class "AxesBasedController.cs" based on ControllerBase - for optimize and restructure using axes and events in controllers.
+- Add new enums "UpdateType", "TouchPhase" in "ControllerBase.cs"
+- Add new bool fields "Enable", "Active", "visible" in "ControllerBase.cs"
+
+Changes:
+- Enum ArrowType renamed to DPadArrowType.
+
+
+
+//***TCK Version 1.4:***//
+
+Fixes:
+Error intercepting steering wheel.
+
+Improvements:
+Added colors for all sprites.
+New event system(pro only).
+Added new class "Axes.cs" for optimization of constains axes data.
+New button option "SwipeOut".
+
+Changes:
+All controllers rewrited for Unity UI Event System.
+New inspectors for all controllers.
+"InputManager.cs" renamed to "TCKInput.cs".
+
+
+
+//***TCK Version 1.3:***//
+
+- Added new controller "Steering Wheel".
+
+
+
+//***TCK Version 1.2:***//
+
+- Added full uGUI Support.
+
+
+
+//***TCK Version 1.1:***//
+
+- Universal Mobile Joystick EVOLVED by Touch Controls Kit.
+
+
+
+//***UMJ Version 3.0:***//
+
+Improvement:
+- Added a new controller item - "touch button".
+- Button is able to track three events Down, Press, Up.
+- Added a new class "ControllerBase" all the controllers are now based on it.
+- Added a new class "Button".
+- Added a new class "Touchpad".
+- Now you can set the layer to the controller before creation.
+- Implemented alignment of nine points of the screen (see webDemo).
+- Completely redesigned formula for sets the controller size and position on screen.
+- Added "smooth return" for static joystick.
+- Added option to enable or disable any axis.
+- Added option to specify names for axes.
+- Added the function to inverse any axis.
+- Now the joystick, touchpad and button can broadcast their own data to the receiver game object.
+- Broadcast can be in any of three modes "SendMessage", "SendMessageUpwards", "BroadcastMessage".
+- For the data transmission can be used as a native method names, and ask specific.
+- If one or more names to be empty, reported the error handler.
+- Broadcasting the data is done in three main events "Start", "Press" and "End".
+- Inspectors for all controllers, displays the "native" names for broadcast methods.
+- Significantly updated and optimized functional joystick and touchpad.
+- Added new API functions (see webDemo).
+
+Fixes:
+- Properties "OffsetX", "OffsetY", "MyName", replaced in "ControllerBase" class.
+- Fields "touchDown" and "touchId" replaced in "ControllerBase" class.
+- Methods "GetCurrentPosition" and "GetDefaultPosition" renamed by "GetPosition".
+- Fields "TouchZoneWidth" and "TouchZoneHeight" transferred to the class "ControllerBase" renamed by "ImageWidth" and "ImageHeight".
+- Internal fields "Horizontal" and "Vertical" replaced by AxisValueX and AxisValueY.
+- Also, many fields and properties have been replaced in "ControllerBase" class.
+- Bug fixes and optimization in the joystick and touchpad.
+
+
+
+//***UMJ Version 2.4:***//
+
+Improvement:
+- API function for enabling and disabling joysticks in scene.
+- Debug API function for Show/Hide touch zones in scene.
+- Parameter settings "Sensitivity", it affects the internal Horizontal and Vertical.
+- Static float GetAxis(string joystickName, string axisName), to get the coordinates.
+- Smart "Obsolete" update system.
+- Error message informing you that the scene is more than one "TouchManager".
+- Special API class ImputManager and more API functions (see API Dock).
+- New field "MyName", needeed to fing joystick from API Call.
+- New class "API_Demo" for demonstrate API functions.
+
+Fixes:
+- Remove the link from the "Component".
+- public fields "bool TouchDown" and "int TouchID" now is internal.
+- Field "TouchDown" renamed to "touchDown".
+- Field "TouchID" renamed to "touchId".
+- enum JoystickModes moved from class "UMJ_Joystick" to namespace UniversalMobileJoystick.
+- namespace UniversalMobileJoystick.Editors renamed to UniversalMobileJoystick.Editors.
+- All public voids in class "UMJ_Joystick" chanjed to internal.
+- All public variables chanjed to properties.
+- Removed void JoystickSetup.
+- Now you do not need to specify names for the child GO, to find GUITexture.
+- After optimizing deleted DV_SETUP_MODE.
+- Class "JoysticksManager" renamed to "TouchManager".
+- Class "UMJ_Editor" renamed to "PrefabCreator".
+- Abbrieature "UMJ_" removed for all classes.
+- Replaced the standard "TouchZone" texture.
+- public fields "JSK_Direction", "JSK_TouchpadAxes", "JSK_TouchForce" are replaced by internal "Horizontal" and "Vertical".
+
+
+
+//***UMJ Version 2.0:***//
+
+Improvement:
+- Joystick Mode "Touchpad" has been completely redesigned and improved.
+- Quickly create a joystick prefabs in one click.
+- Reworked all "of Editor" classes, now configure the joystick even easier and more convenient.
+- "JoysticksManager" is now able to create a joystick prefab.
+- Commented out the most important parts of the code.
+- During the creation of the joystick prefab can assign basic parameters (texture, location, type).
+- Adden special namespaces "UniversalMobileJoystick".
+
+Fixes:
+- Multiple optimization.
+- Due to unstable operation component "umj_button" has been removed.
+- Automatically multitouch checker for all platforms.
+
+
+
+//***UMJ Version 1.5:***//
+
+Improvement:
+- Setup is greatly simplified.
+- For "Hot visual tuning" running game is not longer needed.
+- Unlimited number of joysticks on display.
+- New demo level with four joysticks.
+
+Fixes:
+- Fixed bug with "getting stuck" in determining the ID multitouch.

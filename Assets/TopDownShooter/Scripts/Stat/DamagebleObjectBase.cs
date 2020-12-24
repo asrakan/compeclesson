@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-
+using TopDownShooter.Inventory;
 
 namespace TopDownShooter.Stat
 {
@@ -25,9 +25,9 @@ namespace TopDownShooter.Stat
             this.DestroyDamageble();
         }
 
-        public virtual void Damage(float dmg)
+        public virtual void Damage(IDamage dmg)
         {
-            Health -= dmg;
+            Health -= dmg.Damage;
             if (Health <= 0)
             {
                 OnDeath.Execute();

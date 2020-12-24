@@ -18,7 +18,7 @@ namespace TopDownShooter.Inventory
             base.Destroy();
         }
 
-        public void Shoot(Vector3 origin, Vector3 direction)
+        public void Shoot(Vector3 origin, Vector3 direction, IDamage damage)
         {
             RaycastHit rHit;
             var physic = Physics.Raycast(origin, direction, out rHit);
@@ -27,7 +27,7 @@ namespace TopDownShooter.Inventory
                 int colliderInstanceId = rHit.collider.GetInstanceID();
                 if (DamagebleHelper.DamagebleList.ContainsKey(colliderInstanceId))
                 {
-                    DamagebleHelper.DamagebleList[colliderInstanceId].Damage(5);
+                    DamagebleHelper.DamagebleList[colliderInstanceId].Damage(damage);
                 }
             }
         }

@@ -16,6 +16,7 @@ namespace TopDownShooter.UI
         [SerializeField] private TMP_InputField _inputField;
         private void Awake()
         {
+            UpdateUIWithNetworkState(MatchmakingController.Instance.CurrentNetworkState);
             MessageBroker.Default.Receive<EventPlayerNetworkStateChange>().Subscribe(OnPlayerNetworkState).AddTo(gameObject);
             _inputField.onEndEdit.AddListener(OnEditEnd);
         }
@@ -27,12 +28,18 @@ namespace TopDownShooter.UI
 
         private void OnPlayerNetworkState(EventPlayerNetworkStateChange obj)
         {
-            _currentState.text = "Connetion state: " + obj.PlayerNetworkState.ToString();
+            var networkState = obj.PlayerNetworkState;
+            UpdateUIWithNetworkState(networkState);
+            //_currentState.color = Color.green;
+        }
+
+        private void UpdateUIWithNetworkState(PlayerNetworkState networkState)
+        {
+            _currentState.text = "Connetion state: " + networkState.ToString();
             for (int i = 0; i < _networkButtons.Length; i++)
             {
-                _networkButtons[i].interactable = obj.PlayerNetworkState == PlayerNetworkState.Connected;
+                _networkButtons[i].interactable = networkState == PlayerNetworkState.Connected;
             }
-            //_currentState.color = Color.green;
         }
 
         public void _CreateRoomClick()

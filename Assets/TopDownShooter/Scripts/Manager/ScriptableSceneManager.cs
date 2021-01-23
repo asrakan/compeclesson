@@ -11,6 +11,7 @@ namespace TopDownShooter
     [CreateAssetMenu(menuName = "Topdown Shooter/Manager/ScriptableSceneManager")]
     public class ScriptableSceneManager : AbstractScriptableManager<ScriptableSceneManager>
     {
+
         [SerializeField] private string _menuScene;
         [SerializeField] private string _gameScene;
         public override void Initialize()
@@ -18,11 +19,19 @@ namespace TopDownShooter
             base.Initialize();
             SceneManager.LoadScene(_menuScene);
             MessageBroker.Default.Receive<EventPlayerNetworkStateChange>().Subscribe(OnPlayerNetworkState).AddTo(_compositeDisposable);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
+
 
         public override void Destroy()
         {
             base.Destroy();
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+        {
+            MessageBroker.Default.Publish(new EventSceneLoaded(arg0.name));
         }
 
         private void OnPlayerNetworkState(EventPlayerNetworkStateChange obj)

@@ -7,10 +7,10 @@ namespace TopDownShooter.Inventory
     public class PlayerInventoryCannonItemMono : AbstractPlayerInventoryItemMono
     {
         [SerializeField] private Transform _cannonShootPoint;
-        public void Shoot(IDamage damage)
+        public void Shoot(IDamage damage,int shooterId)
         {
             //add also effects and such
-            ScriptableShootManager.Instance.Shoot(_cannonShootPoint.position, _cannonShootPoint.forward, damage);
+            ScriptableShootManager.Instance.Shoot(_cannonShootPoint.position, _cannonShootPoint.forward, damage,shooterId);
         }
 
         private void OnDrawGizmos()

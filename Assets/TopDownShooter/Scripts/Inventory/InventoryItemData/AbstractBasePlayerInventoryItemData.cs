@@ -8,7 +8,7 @@ namespace TopDownShooter.Inventory
 {
     public abstract class AbstractBasePlayerInventoryItemData : ScriptableObject
     {
-        private PlayerInventoryController _inventoryController;
+        protected PlayerInventoryController _inventoryController;
         protected CompositeDisposable _compositeDisposable;
         public virtual void Initialize(PlayerInventoryController targetPayerInventory)
         {

@@ -19,11 +19,11 @@ namespace TopDownShooter.Inventory
             base.Destroy();
         }
 
-        public void Shoot(Vector3 origin, Vector3 direction, IDamage damage)
+        public void Shoot(Vector3 origin, Vector3 direction, IDamage damage, int shooterId)
         {
             RaycastHit rHit;
             var physic = Physics.Raycast(origin, direction, out rHit);
-            MessageBroker.Default.Publish(new EventPlayerShoot(origin));
+            MessageBroker.Default.Publish(new EventPlayerShoot(origin, shooterId));
             if (physic)
             {
                 int colliderInstanceId = rHit.collider.GetInstanceID();

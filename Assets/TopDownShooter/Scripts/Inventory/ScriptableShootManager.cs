@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TopDownShooter.Stat;
+using UniRx;
 
 namespace TopDownShooter.Inventory
 {
@@ -22,6 +23,7 @@ namespace TopDownShooter.Inventory
         {
             RaycastHit rHit;
             var physic = Physics.Raycast(origin, direction, out rHit);
+            MessageBroker.Default.Publish(new EventPlayerShoot(origin));
             if (physic)
             {
                 int colliderInstanceId = rHit.collider.GetInstanceID();

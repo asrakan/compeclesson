@@ -19,13 +19,14 @@ namespace TopDownShooter.Inventory
             base.Destroy();
         }
 
-        public void Shoot(Vector3 origin, Vector3 direction, IDamage damage, int shooterId)
+        public void Shoot(Vector3 origin, Vector3 direction, IDamage damage, PlayerStat stat)
         {
             RaycastHit rHit;
             var physic = Physics.Raycast(origin, direction, out rHit);
-            MessageBroker.Default.Publish(new EventPlayerShoot(origin, shooterId));
+            MessageBroker.Default.Publish(new EventPlayerShoot(origin, stat));
             if (physic)
             {
+                Debug.Log("Shoot : " + rHit.collider.name); ;
                 int colliderInstanceId = rHit.collider.GetInstanceID();
                 if (DamagebleHelper.DamagebleList.ContainsKey(colliderInstanceId))
                 {

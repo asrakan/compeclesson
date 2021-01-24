@@ -30,9 +30,10 @@ namespace TopDownShooter.Stat
 
         public virtual void Damage(IDamage dmg)
         {
+            Debug.Log("DAMAGE RECEOVED : " + dmg.Damage); 
             if (dmg.TimedBaseDamage > 0)
             {
-                StartCoroutine(TimedBaseDamage(dmg.TimedBaseDamage, dmg.TimedBaseDamageDuration));
+                StartCoroutine(TimedBaseDamage(dmg.TimedBaseDamage, dmg.TimedBaseDamageDuration,dmg.Stat));
             }
             else
             {
@@ -41,13 +42,13 @@ namespace TopDownShooter.Stat
         }
 
 
-        private IEnumerator TimedBaseDamage(float damage, float totalDuration)
+        private IEnumerator TimedBaseDamage(float damage, float totalDuration,PlayerStat playerStat)
         {
             while (totalDuration > 0)
             {
                 yield return new WaitForSeconds(1);
                 totalDuration -= 1;
-                PlayerStat.Damage(damage);
+                PlayerStat.Damage(damage,playerStat);
             }
         }
 

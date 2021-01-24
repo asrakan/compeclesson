@@ -20,6 +20,8 @@ namespace TopDownShooter.Objects
         [SerializeField] private float _timeBaseDamageDuration = 3;
         public float TimedBaseDamageDuration { get { return _timeBaseDamageDuration; } }
 
+        public PlayerStat Stat { get { return null; } }
+
         private void OnTriggerEnter(Collider collider)
         {
             int colliderInstanceId = collider.GetInstanceID();

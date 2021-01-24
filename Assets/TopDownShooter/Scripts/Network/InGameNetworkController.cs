@@ -63,8 +63,8 @@ namespace TopDownShooter.Network
         [PunRPC]
         public void RPC_InstantiateLocalPlayer(int[] viewIdArray, PhotonMessageInfo photonMessageInfo)
         {
-            var instantaited = Instantiate(_remotePlayerPrefab);
-            instantaited.SetOwnership(photonMessageInfo.sender, viewIdArray);
+            var instantiated = Instantiate(_remotePlayerPrefab);
+            instantiated.SetOwnership(photonMessageInfo.sender, viewIdArray);
         }
 
 

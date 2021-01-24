@@ -176,6 +176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7842627157157991782}
+  - component: {fileID: 7241961093462395680}
   - component: {fileID: 7842627157157991783}
   - component: {fileID: 7842627157157991787}
   - component: {fileID: 7842627157157991784}
@@ -206,6 +207,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7241961093462395680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842627157157991776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ae3abe25875e049a1fff502cc938ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damagebleObjectBases:
+  - {fileID: 7842627157157991784}
+  _networkPlayer: {fileID: 7842627157157991781}
+  _inventoryController: {fileID: 7842627157157991783}
 --- !u!114 &7842627157157991783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,8 +269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 7842627157157991780}
-  Health: 100
-  Armor: 100
 --- !u!65 &7842627157157991780
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -309,7 +324,6 @@ MonoBehaviour:
   _photonViewsForOwnership:
   - {fileID: 7842627157157991786}
   - {fileID: 7507311342050463134}
-  _inventoryController: {fileID: 7842627157157991783}
 --- !u!114 &7842627157157991777
 MonoBehaviour:
   m_ObjectHideFlags: 0

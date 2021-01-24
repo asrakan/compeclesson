@@ -21,7 +21,7 @@ namespace TopDownShooter.AI
         public List<AITarget> TargetList;
         private Vector3 _targetMovementPosition;
         private CompositeDisposable _targetDispose;
-        private void Awake()
+        private void Start()
         {
             //creating new one
             _aiMovementInput = Instantiate(_aiMovementInput);
@@ -36,9 +36,10 @@ namespace TopDownShooter.AI
 
         }
 
-        public void UpdateTarget()
+        private void UpdateTarget()
         {
-            _targetMovementPosition = transform.position + ((TargetList[0].transform.position - transform.position).normalized * (Vector3.Distance(TargetList[0].transform.position, transform.position) - 10));
+            var position = transform.position;
+            _targetMovementPosition = position + ((TargetList[0].transform.position - position).normalized * (Vector3.Distance(TargetList[0].transform.position, position) - 10));
 
 
 
@@ -47,7 +48,7 @@ namespace TopDownShooter.AI
             _towerRotationInput.SetTarget(_playerTowerRotationController.TowerTransform, TargetList[0].transform.position);
 
             _targetDispose = new CompositeDisposable();
-            TargetList[0].OnDeath.Subscribe(OnTargetDeath).AddTo(_targetDispose);
+            TargetList[0].PlayerStat.OnDeath.Subscribe(OnTargetDeath).AddTo(_targetDispose);
 
         }
 

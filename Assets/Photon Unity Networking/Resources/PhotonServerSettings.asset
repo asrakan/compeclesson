@@ -38,4 +38,5 @@ MonoBehaviour:
   - RequestForPickupItems
   - RequestForPickupTimes
   - RPC_InstantiateLocalPlayer
+  - RPC_Shoot
   DisableAutoOpenWizard: 1

@@ -72,6 +72,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25db8d8c3eb3b0b43b1183d007cf2b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damagebleObjectBases:
+  - {fileID: 6292384306120506853}
+  _networkPlayer: {fileID: -8933874673140744276}
   _inventoryController: {fileID: 6292384306120506858}
   _shootInput: {fileID: 11400000, guid: 90fe8ac25e49d1344b909767d70f386f, type: 2}
 --- !u!114 &6292384306120506852
@@ -136,8 +139,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 6292384306120506857}
-  Health: 100
-  Armor: 100
 --- !u!65 &6292384306120506857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -166,7 +167,6 @@ MonoBehaviour:
   _photonViewsForOwnership:
   - {fileID: 7516829477453876174}
   - {fileID: 6077938681542198071}
-  _inventoryController: {fileID: 6292384306120506858}
 --- !u!114 &7516829477453876174
 MonoBehaviour:
   m_ObjectHideFlags: 0

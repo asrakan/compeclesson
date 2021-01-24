@@ -6,15 +6,16 @@ using TopDownShooter.Inventory;
 
 namespace TopDownShooter.Stat
 {
-    public class DamagebleObjectBase : MonoBehaviour, IDamageble
+    public class DamagebleObjectBase : MonoBehaviour, IDamageble, IPlayerStatHolder
     {
         [SerializeField] private Collider _collider;
         public int InstanceId { get; private set; }
-        public float Health = 100;
-        public float Armor = 100;
+
+        public PlayerStat PlayerStat { get; set; }
+
         private Vector3 _defaultScale;
         private bool _isDead = false;
-        public ReactiveCommand OnDeath = new ReactiveCommand();
+
         protected virtual void Awake()
         {
             InstanceId = _collider.GetInstanceID();
@@ -33,16 +34,9 @@ namespace TopDownShooter.Stat
             {
                 StartCoroutine(TimedBaseDamage(dmg.TimedBaseDamage, dmg.TimedBaseDamageDuration));
             }
-            if (Armor > 0)
-            {
-                Armor -= (dmg.Damage * dmg.ArmorPenetration);
-            }
             else
             {
-                Health -= dmg.Damage;
-                //basic if armor is negative means damage is much more than armor
-                Health += Armor;
-                CheckHealth();
+                PlayerStat.Damage(dmg);
             }
         }
 
@@ -53,24 +47,13 @@ namespace TopDownShooter.Stat
             {
                 yield return new WaitForSeconds(1);
                 totalDuration -= 1;
-                Health -= damage;
-                CheckHealth();
+                PlayerStat.Damage(damage);
             }
         }
 
-        private void CheckHealth()
+        public void SetStat(PlayerStat stat)
         {
-            if (_isDead)
-            {
-                return;
-            }
-            if (Health <= 0)
-            {
-                StopAllCoroutines();
-                _isDead = true;
-                OnDeath.Execute();
-                Destroy(gameObject);
-            }
+            PlayerStat = stat;
         }
     }
 }

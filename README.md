@@ -1,7 +1,7 @@
 # compeclesson
 This project made for the Bogazici University Compec Club lessons. 
 
-Lesson link : https://www.youtube.com/watch?v=who6TEPt4is
+Lesson link : https://www.youtube.com/watch?v=who6TEPt4is&list=PLo7_YgjhDT-1x-un___OqPrnz8f8W7Hsj
 <br/>
 <b>Game Properties</b>
 <br/>
